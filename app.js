@@ -17,14 +17,14 @@ app.post('/send', async (req, res, next) => {
     const contentHTML = `
         <h1>User Information</h1>
         <ul>
-            <li>${name}</li>
-            <li>${lastName}</li>
-            <li>${email}</li>
+            <li>Nombre: ${name}</li>
+            <li>Apellido: ${lastName}</li>
+            <li>Email: ${email}</li>
         </ul>
-        <p>${message}</p>
+        <p>Mensaje: ${message}</p>
     `
     const transporter = nodemailer.createTransport({
-        service: 'Gmail',
+        host: 'smt.gmail.com',
         secure: false,
         auth: {
             user: process.env.user,
