@@ -11,7 +11,7 @@ app.use(express.json());
 app.use(cors())
 
 
-app.post('/send', async (req, res) => {
+app.post('/send', async (req, res, next) => {
     const { name, lastName, email, message } = req.body
 
     const contentHTML = `
@@ -25,6 +25,7 @@ app.post('/send', async (req, res) => {
     `
     const transporter = nodemailer.createTransport({
         service: 'Gmail',
+        secure: false,
         auth: {
             user: process.env.user,
             pass: process.env.pass
